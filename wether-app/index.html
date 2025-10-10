@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="photo/logo (4).png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- this is google font section   --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn   --------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Wether Forecast App</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Weather Forcast</h1>
+      <div class="card">
+        <div class="searchBox">
+          <input
+            type="text"
+            placeholder="Search city name..."
+            spellcheck="false"
+          />
+          <button>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+        <div class="weather">
+          <img src="photo/sun.png" class="image" />
+          <h2 class="temp">22°C/F</h2>
+          <h3 class="city">Searching...</h3>
+          <p style="font-size: 0.7rem">
+            Feels like <span class="feel">22 </span> °C/F
+          </p>
+
+          <div class="details">
+            <div class="column">
+              <img src="photo/weather (1).png" alt="" />
+              <div>
+                <p class="humidity">50%</p>
+                <p>Humudity</p>
+              </div>
+            </div>
+            <div class="column">
+              <img src="photo/wind.png" alt="" />
+              <div>
+                <p class="wind">20 Km/h</p>
+                <p>Wind</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ------fetch-----
+      const apiKey = "9f285a331a5772eb52ee3f7f958cb1e5";
+      const apiUrl =
+        "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+      // -----------input, button, image----------
+      const searchBox = document.querySelector(".searchBox input");
+      const searchBtn = document.querySelector(".searchBox button");
+      const weatherImage = document.querySelector(".image");
+
+      async function weatherCheck() {
+        const city = searchBox.value;
+        // --------------------------fetch -----------------
+        const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+        let data = await response.json();
+        // console.log(data);
+
+        
+
+        document.querySelector(".city").innerHTML = data.name;
+        document.querySelector(".temp").innerHTML =
+          Math.round(data.main.temp) + "°C/F";
+        document.querySelector(".humidity").innerHTML =
+          data.main.humidity + "%";
+        document.querySelector(".feel").innerHTML = data.main.feels_like;
+        document.querySelector(".wind").innerHTML = data.wind.speed + "Km/h";
+
+        document.querySelector(".weather").style.display = "flex";
+
+        // -------------image change-----------
+        const changeIcon = data.weather[0].main;
+        if (changeIcon === "Clouds") {
+          weatherImage.src = "photo/cloudy.png";
+        } else if (changeIcon === "Clear") {
+          weatherImage.src = "photo/sun.png";
+        } else if (changeIcon === "Rain") {
+          weatherImage.src = "photo/rainy-day.png";
+        } else if (changeIcon === "Drizzle") {
+          weatherImage.src = "photo/weather.png";
+        } else if (changeIcon === "Snow") {
+          weatherImage.src = "photo/snowflake.png";
+        } else if (changeIcon === "Mist") {
+          weatherImage.src = "photo/fog.png";
+        } else {
+          weatherImage.src = "photo/sun.png";
+        }
+
+        if (data.cod === "404") {
+          alert("City not found!");
+          return;
+        }
+      }
+      searchBtn.addEventListener("click", () => {
+        weatherCheck();
+      });
+    </script>
+  </body>
+</html>

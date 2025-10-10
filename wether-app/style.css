@@ -1,0 +1,134 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+html {
+  scroll-behavior: smooth;
+  animation: fadeed 0.5s ease-in-out;
+   font-family: "Roboto", sans-serif;
+}
+body{
+    width: 100%;
+    height: auto;
+     font-family: "Roboto", sans-serif;
+     color: #fff;
+     background: #000;
+}
+.container{
+    max-width: 1280px;
+    height: auto;
+    width: 100%;
+    background: #1312121c;
+    padding: 20px 40px;
+    border-radius: 10px;
+    margin: 2% auto;
+}
+.container h1{
+    text-align: center;
+    margin-bottom: 2%;
+}
+.card{
+    max-width: 100%;
+    width: 45%;
+    margin: 5px auto;
+    padding: 20px 25px;
+    background: linear-gradient(130deg, #00fed87a, #5b548a9a);
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+   box-shadow: rgba(213, 213, 228, 0.699) 0px 30px 60px -12px inset, rgba(199, 189, 189, 0.87) 0px 18px 36px -18px inset;
+   
+}
+.card .searchBox{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+.searchBox input{
+    padding: 10px 15px;
+    border: 0;
+    outline: 0;
+    width: 95%;
+    border-radius: 35px;
+    font-size: 1rem;
+}
+.searchBox button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    outline: 0;
+    border: 0;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+button i{
+    font-size: 1rem;
+    transition: 0.1s ease;
+}
+button:hover i{
+    font-size: 1.1rem;
+}
+.weather{
+    margin: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.weather .image{
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.weather h2{
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-top: 15px;
+
+}
+.weather h3{
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+.details{
+    max-width: 100%;
+    padding: 10px  10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.details .column{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.column img{
+    width: 80px;
+}
+.column p{
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+.feel{
+    color: rgb(255, 230, 0);
+}
