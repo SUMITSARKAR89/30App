@@ -37,7 +37,9 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
+        <span class="error">invalid city</span>
         <div class="weather">
+          
           <img src="photo/sun.png" class="image" />
           <h2 class="temp">22°C/F</h2>
           <h3 class="city">Searching...</h3>
@@ -68,8 +70,7 @@
     <script>
       // ------fetch-----
       const apiKey = "9f285a331a5772eb52ee3f7f958cb1e5";
-      const apiUrl =
-        "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+      const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
       // -----------input, button, image----------
       const searchBox = document.querySelector(".searchBox input");
@@ -80,20 +81,22 @@
         const city = searchBox.value;
         // --------------------------fetch -----------------
         const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
-        let data = await response.json();
-        // console.log(data);
-
-        
-
+         let data = await response.json();
+       
+        if(response.status == 404){
+          document.querySelector(".error").style.display = "flex";
+          document.querySelector(".weather").style.display = "none";
+        }else{
+          
+         //console.log(data);
         document.querySelector(".city").innerHTML = data.name;
-        document.querySelector(".temp").innerHTML =
-          Math.round(data.main.temp) + "°C/F";
-        document.querySelector(".humidity").innerHTML =
-          data.main.humidity + "%";
+        document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C/F";
+        document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
         document.querySelector(".feel").innerHTML = data.main.feels_like;
         document.querySelector(".wind").innerHTML = data.wind.speed + "Km/h";
 
         document.querySelector(".weather").style.display = "flex";
+        document.querySelector(".error").style.display = "none";
 
         // -------------image change-----------
         const changeIcon = data.weather[0].main;
@@ -111,11 +114,8 @@
           weatherImage.src = "photo/fog.png";
         } else {
           weatherImage.src = "photo/sun.png";
-        }
+        } 
 
-        if (data.cod === "404") {
-          alert("City not found!");
-          return;
         }
       }
       searchBtn.addEventListener("click", () => {

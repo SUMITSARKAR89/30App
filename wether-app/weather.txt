@@ -1,0 +1,45 @@
+const apiKey = "9f285a331a5772eb52ee3f7f958cb1e5";
+const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+const searchBox = document.querySelector(".search input");
+const searchButton = document.querySelector("button");
+const weatherImg = document.querySelector(".image");
+
+async function weatherCheck(){
+    const apiCity = searchBox.value;
+    const response = await fetch(apiUrl + apiCity + `&apoid=${apiKey}`);
+    let data = awiat response.JSON(); 
+
+    if (response.status == 404){
+        document.querySelector(".weater").style.display = "none";
+        document.querySelector(".error").style.display = "flex";
+    }else{
+        
+        document.querySelector(".temp").innerHtml = Math.round( data.main.temp) + "C/F";
+        document.querySelector(".city").innerHtml = data.name;
+        document.querySelector(".hum").innerHtml = data.main.humidity + "%";
+        document.querySelector(".wind").innerHtml = data.wind.speed + "Km/h";
+
+        document.querySelector(".weater").style.display = "flex";
+        document.querySelector(".error").style.display = "none";
+
+        const weatherIcon = data.weather[0].main;
+        if(weatherIcon === "Cloud"){
+            weatherCheck = "picture1";
+        }else if (weatherIcon === "Clear"){
+            weatherCheck = "picture2"
+        }else if (weatherIcon === "Rain"){
+            weatherCheck = "picture3"
+        }else if (weatherIcon === "snow"){
+            weatherCheck = "picture4"
+        }else{
+            weatherCheck = "picture1"
+        }
+    }
+        searchButton.addEventListener("click", ()=> {
+            weatherCheck();
+
+        });
+
+}
+

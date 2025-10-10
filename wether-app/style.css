@@ -63,6 +63,16 @@ body{
     border-radius: 35px;
     font-size: 1rem;
 }
+.error{
+    text-align: center;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    
+    max-width: 100%;
+    
+}
 .searchBox button{
     width: 40px;
     height: 40px;
