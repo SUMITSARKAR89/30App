@@ -1,6 +1,7 @@
 const apiKey = "9f285a331a5772eb52ee3f7f958cb1e5";
 const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
+
 const searchBox = document.querySelector(".search input");
 const searchButton = document.querySelector("button");
 const weatherImg = document.querySelector(".image");
@@ -42,4 +43,22 @@ async function weatherCheck(){
         });
 
 }
+প্রথমে API key & APIUrl নিতে হবে।
+async awit function দিয়ে কল দিতে হবে। apiUrl + apiCity + `&appid = &{apikey}`
+async function এ response কল করতে হবে।
 
+input, button variable নিতে হবে। input এ value কে ডিফাইন করতে হবে।
+যথাক্রমে image variable ডিফাইন করতে হবে।
+ 
+ এবার async function এর ভেতরে কল দিতে হবে এবং পর্যায়ক্রমে function এর ভেতরে cityName, Cencias, wind, speed, humidity নামে variable ডিফাইন করতে হবে।
+ এবার button variable কে addEventListener এ কল করতে হবে যেন বাটনে ক্লিক করলেই function এর রেজাল্ট দেখা যায়।
+
+ weatহer image পরিবর্তন করার জন্য আমরা image variable এ ডাটা ডিফাইন করবো- 
+ ডাটাগুলো if/else loop এর মাধ্যমে রান করবো।
+ 
+ এবার app টি যখন invalid city দেখাবে এর জন্য
+ if(response.status == "404"){
+
+ } else{
+    এর ভেতরে পুরো async funtion রাখতে হবে।
+ }

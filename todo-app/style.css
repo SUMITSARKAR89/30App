@@ -1,0 +1,136 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+html {
+  scroll-behavior: smooth;
+  animation: fadeed 0.5s ease-in-out;
+   font-family: "Roboto", sans-serif;
+}
+body{
+    width: 100%;
+    height: auto;
+     font-family: "Roboto", sans-serif;
+     color: #fff;
+     background: #000;
+}
+.container{
+    max-width: 1280px;
+    height: auto;
+    width: 100%;
+    background: #1312121c;
+    padding: 20px 40px;
+    border-radius: 10px;
+    margin: 2% auto;
+}
+.card{
+    max-width: 100%;
+    width: 45%;
+    margin: 5px auto;
+    padding: 20px 25px;
+    background: linear-gradient(130deg, #0c7c6b9c, #5b548a9a);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+   box-shadow: rgba(213, 213, 228, 0.699) 0px 30px 60px -12px inset, rgba(199, 189, 189, 0.87) 0px 18px 36px -18px inset;
+   
+}
+.inputBox{
+    margin-top: 5%;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+}
+.input{
+    width: 100%;
+    position: relative;
+    border: 1px solid #8a7a6d;
+    outline: 0;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border-radius: 35px;
+    background: #e4dfdfea;
+}
+button{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    right: -37px;
+    color: #000;
+    background: #fd7301;
+    border-radius: 35px;
+    border: 0;
+    font-size: 1rem;
+    outline: 0;
+    padding: 10px 25px;
+    transition: 0.2s ease;
+    cursor: pointer;
+
+}
+button:hover{
+    background: #da6505;
+}
+.listBox{
+    padding: 15px 5px;
+    max-width: 100%;
+}
+.listBox ul{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+.listBox ul li{
+    font-size: 1rem;
+    text-transform: capitalize;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    font-weight: 500;
+}
+ul li::before{
+    position: absolute;
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    top: 0;
+    background-image: url(photos/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #fff;
+    left: -5px;
+    cursor: pointer;
+}
+ul li.checked{
+    text-decoration: line-through;
+    color: #fc7303;
+}
+ul li.checked::before{
+    background-image: url(photos/check.png);
+    
+
+}
+ul li span{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 3px 5px;
+    font-size: 1rem;
+    transition: 0.2s ease;
+    background: #1f9b9b48;
+    border-radius: 5px;
+    color: #fff;
+}
+ul li span:hover{
+    background: #585553;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="photos/logo (4).png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- this is google font section   --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn   --------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Todo apps</title>
+  
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align: center;">To-Do list app</h1>
+    <div class="card">
+      <div class="title">
+        <h3>To-Do list</h3>
+      </div>
+      <div class="inputBox">
+        <input type="text" placeholder="Add your Task" class="input">
+        <button onclick="addBtn()">Add</button>
+      </div>
+      <div class="listBox">
+        <ul id="list">
+          <!-- <li class="checked">one</li>
+          <li>two</li>
+          <li>three</li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const input = document.querySelector(".input");
+    const listCard = document.querySelector("#list");
+
+     function addBtn() {                // button function কল করা হলো।
+      if(input.value === ''){           //input এর value যদি ফাকা থাকে.
+        alert("please add your Task"); // তাহলে এলার্ট শো করবে।
+      }else{
+        let liTag = document.createElement("li"); // list element বানানো হলো। 
+        liTag.innerHTML = input.value;            // লিস্টের element এর ভেতরে htmlএ -> input এর value নেয়া হলো।
+        listCard.appendChild(liTag);              // লিস্ট শো হবে।
+
+        let spanTag = document.createElement("span"); //span elemetns বানানো হলো। 
+        spanTag.innerHTML = "\u00d7";                 //span elements এর ভেতরে html-এ -> আইকন নেয়া হলো। 
+        liTag.appendChild(spanTag);                   // লিস্টের ভেতরে span শো হবে।
+
+        
+      }
+      input.value = '';                             // input এর value ফাকা হয়ে যাবে auto
+      saveData();
+      
+    };
+
+    listCard.addEventListener("click", (e) =>{     // ul এ click করলে একটা event রান করবে।
+      const clickElement = e.target;
+
+      if(clickElement.tagName === "LI") {          //যদি event এর <li> তে ক্লিক করে 
+        clickElement.classList.toggle("checked");  // তাইলে checked এর ব্যকগ্রাউন্ড চেঞ্জ হবে।
+        saveData(); 
+
+      }else if(clickElement.tagName === "SPAN"){   //যদি event এর <span> তে ক্লিক করে 
+        clickElement.parentElement.remove();        // তাহলে span এ থাকা element remove হয়ে যাবে।
+        saveData();
+      }
+    });
+
+
+    // -------------------for localStorage data save----------------- 
+    function saveData (){
+      localStorage.setItem("data", listCard.innerHTML);
+    }
+
+    // --------------------for localStorage show data--------------
+    function showData (){
+      listCard.innerHTML = localStorage.getItem("data");
+    }
+    showData();
+  </script>
+    
+</body>
+</html>
