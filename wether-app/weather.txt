@@ -1,3 +1,12 @@
+*NEW KEYGUN*
+*apiKey
+*apiUrl
+*async funtion + await fetch
+*await response.JSON()
+*status
+*Math.random
+*api=JSOM.main/data/name/object/array .....etc
+
 const apiKey = "9f285a331a5772eb52ee3f7f958cb1e5";
 const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
@@ -5,6 +14,42 @@ const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 const searchBox = document.querySelector(".search input");
 const searchButton = document.querySelector("button");
 const weatherImg = document.querySelector(".image");
+
+//এখানে কি করা হলোঃ
+১. async function weatherCheck() কল করা হলো API fetch করার জন্য
+        #1st
+        *input এর value একটা variable এ নেয়া হল।
+        *await fetch এ url+ `&appid=${apiKey}` 
+        * যদি input এর value ভুল হয় তাহলে display শো হবে না + error আকারে প্রকাশ হবে।
+        * যদি input এর value ঠিক হয় তাহলে display শো হবে।
+        
+        #2ND
+        *weater এর ছবি পরিবর্তন করার জন্য=> if/else লুপ ব্যবহার করা হলো।
+        
+        #3RD
+        *button এ ক্লিক করলে async function weatherCheck() রান করবে।
+            
+প্রথমে API key & APIUrl নিতে হবে।
+async awit function দিয়ে কল দিতে হবে। apiUrl + apiCity + `&appid = &{apikey}`
+async function এ response কল করতে হবে।
+
+input, button variable নিতে হবে। input এ value কে ডিফাইন করতে হবে।
+যথাক্রমে image variable ডিফাইন করতে হবে।
+ 
+ এবার async function এর ভেতরে কল দিতে হবে এবং পর্যায়ক্রমে function এর ভেতরে cityName, Cencias, wind, speed, humidity নামে variable ডিফাইন করতে হবে।
+ এবার button variable কে addEventListener এ কল করতে হবে যেন বাটনে ক্লিক করলেই function এর রেজাল্ট দেখা যায়।
+
+ weatহer image পরিবর্তন করার জন্য আমরা image variable এ ডাটা ডিফাইন করবো- 
+ ডাটাগুলো if/else loop এর মাধ্যমে রান করবো।
+ 
+ এবার app টি যখন invalid city দেখাবে এর জন্য
+ if(response.status == "404"){
+
+ } else{
+    এর ভেতরে পুরো async funtion রাখতে হবে।
+ }
+
+
 
 async function weatherCheck(){
     const apiCity = searchBox.value;
@@ -43,22 +88,4 @@ async function weatherCheck(){
         });
 
 }
-প্রথমে API key & APIUrl নিতে হবে।
-async awit function দিয়ে কল দিতে হবে। apiUrl + apiCity + `&appid = &{apikey}`
-async function এ response কল করতে হবে।
 
-input, button variable নিতে হবে। input এ value কে ডিফাইন করতে হবে।
-যথাক্রমে image variable ডিফাইন করতে হবে।
- 
- এবার async function এর ভেতরে কল দিতে হবে এবং পর্যায়ক্রমে function এর ভেতরে cityName, Cencias, wind, speed, humidity নামে variable ডিফাইন করতে হবে।
- এবার button variable কে addEventListener এ কল করতে হবে যেন বাটনে ক্লিক করলেই function এর রেজাল্ট দেখা যায়।
-
- weatহer image পরিবর্তন করার জন্য আমরা image variable এ ডাটা ডিফাইন করবো- 
- ডাটাগুলো if/else loop এর মাধ্যমে রান করবো।
- 
- এবার app টি যখন invalid city দেখাবে এর জন্য
- if(response.status == "404"){
-
- } else{
-    এর ভেতরে পুরো async funtion রাখতে হবে।
- }

@@ -1,0 +1,79 @@
+NEW KEYGUN*
+*innerHtml
+*appenchild
+*creatElement
+*tagName
+*toggle
+*parentElemet
+*localStorage.setItem
+*localStorage.getItem
+
+const inputBox = document.quarySelector("input"); 
+const listBox = document.quarySelector("#list");
+
+
+//এখানে কি করা হয়েছেঃ
+১. onclick = addBtn() ফাংশন নিয়ে কাজ করা হচ্ছে।
+২. যদি input এর ভেতরের value ফাকা থাকে তাহলে input value তে alert massage আসবে।
+৩.যদি input এর ভেতরে ফাকা না থাকে তাহলে -> <ul> এর ভেতরে <li> শো হবে।
+           * একটা <li> element create করা হবে + 
+           * <li> এর ভেতরে value পাশ হবে +
+           * সেই value টা appenchild এর মাধ্যমে নেয়া হবে।
+৪.যদি input এর ভেতরে ফাকা না থাকে তাহলে -> <li> এর ভেতরে <span> শো হবে।
+           * একটা <span> element create করা হবে + 
+           * <span> এর ভেতরে value পাশ হবে +
+           * সেই value টা appenchild এর মাধ্যমে নেয়া হবে।
+৫. এবং সাথে সাথেই input খালি হয়ে যাবে।
+
+function addBtn (){
+    const inputValue = input.value;
+    if(inputValue === ""){
+        alert("please add task");
+    }else {
+        let liTag = document.creatElement("li");
+        liTag.innerHtml = inputValue;
+        listBox.appenchild(liTag)
+
+        let spanTag = document.creatElement("span");
+        spanTag.innerHtml = ".\icon.png";
+        liTag.appenchild(spanTag)
+    };
+    inputValue = '';
+    saveItem();
+};
+
+
+//এখানে কি করা হলোঃ
+১. <ul> এর ভেতরে <li> কে ক্লিক করলে একটা event পাস হবে
+২. cleckTarget নামে একটা value নেয়া হবে।
+৩. যদি tagName <li> তে ক্লিক করা হয় তাহলে toggle এর মাধ্যমে .checked ক্লাস কাজ করবে।
+৪. যদি tagName <span> তে ক্লিক করা হয় তাহলে <li> parentElemet টা remove হয়ে যাবে।
+
+
+
+listBox.addEventListener("click", (e)=> {
+    const clickTarget = e.target;
+    if(clickTarget.tagName === "LI){
+        clickTarget.classList.toggle("checked");
+        saveItem();
+    }else(clickTarget.tagName === "SPAN"){
+        clickTarget.parentElemet.remove();
+        saveItem();
+    }
+
+});
+
+//এখানে কি করা হলোঃ
+১. data গুলো যেন set করতে
+        * saveItem() fanction এর মাধ্যমে local storage এ <li> এর ডাটাগুলো set করবো।
+২. save করা data গুলো যেন পাওয়া যায়
+        * showItem() function এর মাধ্যমে local storage এ <li> এর ডাটাগুলো get করবো ।      
+
+function saveItem (){
+    localStorage.setItem("demo", listBox.innerHtml)
+}
+
+function showItem (){
+    listBox.innerHtml = localStorage.getItem("demo")
+}
+showItem();
