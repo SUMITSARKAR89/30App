@@ -58,11 +58,11 @@
       }else{
         let liTag = document.createElement("li"); // list element বানানো হলো। 
         liTag.innerHTML = inputValue;            // লিস্টের element এর ভেতরে htmlএ -> input এর value নেয়া হলো।
-        listCard.appendChild(liTag);              // লিস্ট শো হবে।
+        listCard.appendChild(liTag);              // লিস্ট শো হবে। ul এর appenchild হচ্ছে li
 
         let spanTag = document.createElement("span"); //span elemetns বানানো হলো। 
         spanTag.innerHTML = "\u00d7";                 //span elements এর ভেতরে html-এ -> আইকন নেয়া হলো। 
-        liTag.appendChild(spanTag);                   // লিস্টের ভেতরে span শো হবে।
+        liTag.appendChild(spanTag);                   // লিস্টের ভেতরে span শো হবে। li এর appenchild হচ্ছে span
 
         
       }

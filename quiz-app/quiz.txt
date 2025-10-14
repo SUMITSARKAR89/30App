@@ -1,0 +1,88 @@
+*KEYGUN*
+*forEach()
+*classList
+*innerHtml
+*getAttribute
+*parentElement
+*disabled
+*true
+
+//এখানে কি হলোঃ
+score, button, totalScore, resultScore, mainCard & input field গুলোকে variable নেওয়া হলো
+
+const skipBtn = document.querySelector("#skip");
+const score = document.querySelector("#score");
+const totalScore = document.querySelector("#Total-score");
+const resultScore = document.querySelector("#result-score");
+
+const card = document.querySelectorAll(".card");
+const input = document.querySelectorAll("input");
+ 
+ let count = 0;
+
+//এখানে কি হলোঃ
+let currentQ = 0; varable নেয়া হলো।
+১. skipBtn এ ক্লিক করলে একটা function কল হবে। 
+
+২. function() এর ভেতরে -> 
+        * প্রতিটা card কল করার সময় একট একটা করে open হবে + এবং বাকিগুলো remove হয়ে যাবে।
+        * যদি ১ম card এর থেকে currentQ নামে variable বড় হয় তাহলে card পরবর্তি ধাপে যাবে।
+        * পরের card এর currentQ নামে variable যোগ হবে/ নতুন card আসবে।
+        * যদি  ১ম card এর থেকে currentQ নামে variable সমান হয় তাহলে skipBtn বন্ধ হয়ে যাবে।
+        
+
+let currentQuestion = 0;
+skipBtn.addEventListener("click", showQuizQuestion);
+function showQuizQuestion(){
+    let contentCard = card.length -1;
+
+    card.forEach(card => card.classList.remove('active'));
+    if(currentQuestion < contentCard){
+        currentQuestion++;
+    }
+
+    card[currentQuestion].classList.add('active');
+
+    if(currentQuestion === contentCard){
+        skipBtn.style.display = "none";
+    }
+    resultScore.innerHtml = count;
+};
+
+
+//এখানে কি হলোঃ
+let count = 0; variable নেয়া হলো।
+১. প্রতিটা inputAnsware কল করার জন্য forEach() function নেয়া হলো।
+    *** inputAnsware এর ভেতরে প্রতিটা input এর value পরিবর্তন করার জন্য একটা event handler নেয়া হলো।->
+        ** variable a = event এর value এর ভেতরের সবকয়েকটা input 
+        ** variable b = event এর attribute।
+
+        **variable b যদি event এর attribute ঠিক থাকে->
+            * count এ 20 যোগ হবে।
+            * score এর element এ count শো হবে।
+            * totalScore এর element এ count শো হবে।
+        ** variable b যদি event এর attribute ঠিক না থাকে->
+            * varable a এর প্রতিটা value ডিসাবল হয়ে যাবে। forEach () এর মাধ্যমে
+        
+
+
+
+let count = 0;
+input.forEach(input => {
+    input.addEventListener("change", (e) => {
+         
+        const desableInput = e.target.parentElement.querySelectorAll("input");
+        const isCorrect = e.target.getAttribute("value");
+
+        if(isCorrect){
+            count +=20;
+            score.innerHtml = count;
+            totalScore.innerHtml = count;
+        }else{
+             desableInput.forEach(inp => inp.disabled = true);
+
+        }
+        
+       
+    })
+})

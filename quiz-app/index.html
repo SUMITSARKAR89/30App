@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="logo (4).png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- this is google font section   --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn   --------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>quiz app</title>
+  </head>
+<body>
+    <div class="container">
+        <h1>Quiz App</h1>
+        <div class="card">
+            <div class="header">
+                <span>Score =<b id="score">0</b></span>
+                <div><span id="totalScore">00</span>/100</div>
+            </div>
+            <div class="body">
+                <!-- -----------question one------------  -->
+                <div class="qa-card active">
+                    <h2>Question 1. Find the correct answare.</h2>
+                    <div class="answare">
+                        <input type="radio" name="a1" id="">
+                        <span>5 + 10 = 20</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a1" id="">
+                        <span>5 + 10 = 10</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a1" id="" valid = "valid">
+                        <span>5 + 10 = 15</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a1" id="">
+                        <span>5 + 10 = 25</span>
+                    </div>
+                </div>
+
+                <!-- --------------question two-----------  -->
+                 <div class="qa-card ">
+                    <h2>Question 2. if 5 * 5 = 25, then 5 * 7 = ?</h2>
+                    <div class="answare">
+                        <input type="radio" name="a2" id="" valid = "valid">
+                        <span>35</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a2" id="">
+                        <span>45</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a2" id="" >
+                        <span>55</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a2" id="">
+                        <span>60</span>
+                    </div>
+                </div>
+
+                <!-- -----------question three-------------  -->
+                  <div class="qa-card ">
+                    <h2>Question 3. Rahim comes to School at 7.00 AM and goes to home at 10.00 AM. How much time he spending on School?</h2>
+                    <div class="answare">
+                        <input type="radio" name="a3" id="" >
+                        <span>4 Hour.</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a3" id="">
+                        <span>3 Hour half minute</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a3" id="" >
+                        <span>5 Hour</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a3" id="" valid = "valid">
+                        <span>3 Hour.</span>
+                    </div>
+                </div>
+
+                <!-- --------------question Four----------------  -->
+                 <div class="qa-card ">
+                    <h2>Question 4. Find the serial of Fandamental Number of this group.
+                        <pre>[8,10, 2, 5, 15]</pre> </h2>
+                    <div class="answare">
+                        <input type="radio" name="a4" id="" >
+                        <span>2, 5, 15, 10, 8</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a4" id="">
+                        <span>15, 10, 5, 8, 2</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a4" id="" valid = "valid" >
+                        <span>2, 5, 8, 10, 15</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a4" id="">
+                        <span>10, 5, 8, 2, 15</span>
+                    </div>
+                </div>
+
+                <!-- ----------------question Five -----------------  -->
+                  <div class="qa-card  ">
+                    <h2>Question 5. Find the value of this math. 
+                        <pre> 15 + 25 + 5 = ??</pre>
+                    </h2>
+                    <div class="answare">
+                        <input type="radio" name="a5" id="" >
+                        <span> = 35</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a5" id="" valid = "valid">
+                        <span> = 45</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a5" id="" >
+                        <span> = 65</span>
+                    </div>
+                    <div class="answare">
+                        <input type="radio" name="a5" id="">
+                        <span> = 55</span>
+                    </div>
+
+                    
+                </div>
+
+                <div class="qa-card">
+                    <h4>Your total score <b id="resultScore">0</b> out of 100</h4>
+                </div>
+
+            </div>
+            <div class="footer">
+                <button id="skip">next</button>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <script>
+
+        // variable collected
+        const skipBtn = document.querySelector("#skip");
+        const score = document.querySelector("#score");
+        const totalScore = document.querySelector("#totalScore");
+        const resultScore = document.querySelector("#resultScore");
+        const questionCard = document.querySelectorAll(".qa-card");
+        const answareInput = document.querySelectorAll(".qa-card .answare input");
+
+        
+       
+
+        // এখানে কি হলোঃ 
+        // ১. skipBtn ক্লিক করলে function() রান হবে।
+                // *৫টা card এর মধ্যে -> ১ম card ওপেন হবে বাকিগুলো বন্ধ থাকবে। class = remove হবে।
+                // * যদি card এর সংখ্যা card এর পরিমাপ থেকে বেশি হয় তাহলে card পরের ধাপে যাবে। ++
+                // * এবং এর পরপরই ২য় card ওপেন হবে। class = active হবে
+                // * যদি card এর সংখ্যা card এর পরিমাপের সমান হয়
+                // 
+        let currentquestion = 0;        
+        skipBtn.addEventListener("click", showNextQuestion);
+        function showNextQuestion(){
+            let cardLenght = questionCard.length -1;
+            
+            questionCard.forEach(card => card.classList.remove("active"));
+            
+            if(currentquestion < cardLenght){
+                currentquestion++;
+            };
+            questionCard[currentquestion].classList.add("active");
+
+
+            if(currentquestion === cardLenght){
+                skipBtn.style.display = "none"
+            }
+
+            resultScore.innerHTML = scoreCount;
+        };
+
+
+        //এখানে কি হলোঃ
+        //১. প্রতিটা ans card কে কল দেব forEach() function দিয়ে।
+                //a. ans card পরিবর্তন করার জন্য একটা event handler নেব।
+                        // *variable =>//
+                        //1. রাইট card এর জন্য একটা 
+                        //2. input এর value = "attribute" এর জন্য একটা
+
+                //b. যদি  input এর value = "attribute" সঠিক হয় তাহলে->
+                        // scroreCard এ ২০ +যোগ হবে। ->
+                        // একই সাথে score এর ভ্যালু পরবর্তন হবে।
+                        // একই সাথে totalScore এর ভ্যলু পরিবর্তন হবে।
+                //c.  রাইট card এর সঠিক input রেখে বাকিগুলো বন্ধ বা diable করার জন্য একটা variable নেব। 
+                        // প্রতিটা disable variable কল করার জন্য forEach() function নেব।             
+                        
+
+         let scoreCount = 0;
+        answareInput.forEach(input =>{
+            input.addEventListener('change', (e) => {
+                const i = e.target;
+                const diableInput = i.parentElement.querySelectorAll("input");
+                const isCorrect = i.getAttribute('valid');
+                
+
+                if(isCorrect){
+                    scoreCount += 20;
+                    score.innerHTML = scoreCount;
+                    totalScore.innerHTML = scoreCount;
+                }else{
+                    diableInput.forEach(inp => inp.disabled = true);
+                }
+
+                
+
+                
+            })
+        })
+        
+
+        
+
+
+
+    </script>
+    
+</body>
+</html>
