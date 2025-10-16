@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="logo (4).png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- this is google font section   --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn   --------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Random password generator app</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Random password Generator</h1>
+      <div class="card">
+        <div class="pass-box">
+          <input type="text" name="" id="password" placeholder="Password" />
+          <i class="fa-solid fa-copy" id="copy"></i>
+        </div>
+        <button class="gen-box" onclick="generateBtn()">
+            <i class="fa-solid fa-bolt"></i>
+            <p class="gen">Generate password</p>
+        </button>
+
+      </div>
+    </div>
+
+    <script>
+        const passwordBox = document.querySelector("#password");
+        const copyBtn = document.getElementById("copy");
+
+        const length = 10;
+        const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+        const numberCase = "1234567890";
+        const symbolCase = "!@#$%^&*(){}[]?|/,.`~";
+
+        const charecters = upperCase + lowerCase + numberCase + symbolCase ;
+
+        //এখানে কি হলোঃ
+        //১. onclick() এ ক্লিক করলে ->
+                //* একটা empty variable এ এরপর প্রতিটা টাইপ থেকে (uppercase, lowercase, number, symbol)  একেকটা ক্যারেক্টার র‍্যান্ডমলি নেয়া হচ্ছে Math.random() দিয়ে। 
+                //* যতক্ষন না পর্যন্ত passkwy এর charecter ১০ পর্যন্ত না হয় ততক্ষন পর্যন্ত রান করবে।
+                // * ১৫ সেকেন্ডের পর value খালি হয়ে যাবে।
+               
+        function generateBtn(){
+            let passKey = "";
+            passKey += upperCase[Math.floor(Math.random() * upperCase.length)];
+            passKey += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+            passKey += numberCase[Math.floor(Math.random() * numberCase.length)];
+            passKey += symbolCase[Math.floor(Math.random() * symbolCase.length)];
+
+            while(length > passKey.length){
+                passKey += charecters[Math.floor(Math.random() * charecters.length)]
+
+            }
+            passwordBox.value = passKey;
+            setTimeout(() => {
+                passwordBox.value = "";
+                
+            }, 3000);
+        }
+
+        // এখান কি হলোঃ
+        //২. copyBtn  এ ক্লিক করলে password input সিলেক্ট হবে 
+            // password input এর লেখা  execCommand এর মাধ্যমে কপি হয়ে যাবে
+
+        // copyBtn.addEventListener("click", ()=> {
+        //     passwordBox.select();
+        //     document.execCommand('copy');
+        //     // navigator.clipboard.writeText(passwordBox.value)
+
+        //     copyBtn.style.color = "green";
+        //     // alert("password copied");
+        //     setTimeout(()=> {
+        //         copyBtn.style.color = "#fff";
+        //     }, 1200);
+
+        // })
+
+        copyBtn.addEventListener("click", () => {
+            const pw = passwordBox.value;
+
+            if(pw){
+                navigator.clipboard.writeText(pw)
+                .then( () => {
+                    copyBtn.style.color = "green";
+                    setTimeout(() => {
+                        copyBtn.style.color = "#fff";
+
+                    }, 3000)
+                })
+            }
+        })
+    </script>
+  </body>
+</html>

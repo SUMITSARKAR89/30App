@@ -1,0 +1,93 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+html {
+  scroll-behavior: smooth;
+  animation: fadeed 0.5s ease-in-out;
+   font-family: "Roboto", sans-serif;
+}
+body{
+    width: 100%;
+    height: auto;
+     font-family: "Roboto", sans-serif;
+     color: #fff;
+     background: #000;
+}
+.container{
+    max-width: 1280px;
+    height: auto;
+    width: 100%;
+    background: #13121252;
+    padding: 20px 40px;
+    border-radius: 10px;
+    margin: 2% auto;
+}
+.card{
+    max-width: 100%;
+    width: 45%;
+    padding: 20px;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+
+    
+    background: #073d69;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+  
+   
+}
+h1{
+    text-align: center;
+    margin-top: 15px;
+}
+.pass-box,
+.gen-box{
+    max-width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+    gap: 10px;
+}
+.pass-box {
+    background: #0f4fad31;
+    width: 100%;
+    padding: 2px;
+    border-radius: 5px;
+
+}
+.pass-box input{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    font-size: 1rem;
+}
+.pass-box i{
+    font-size: 1.5rem;
+    margin: 5px;
+}
+.gen-box{
+    background: rgb(13, 88, 13);
+    padding: 12px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    color: #fff;
+}

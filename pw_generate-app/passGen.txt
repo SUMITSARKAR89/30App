@@ -1,0 +1,52 @@
+এখানে কি হলোঃ
+১. password, btn, lenght(10 charecter), uppercase(Upper Alphabet), lowerCase(lower Alphabet), symbolCase(symbol), numberCase(number) নেয়া হলো।
+২. সকল variable কে একটা variable এ নেয়া হলো।
+
+৩. generate function() এর ভেতরে ->
+    * একটা sting নেয়া হলো।
+    * একেকটা ক্যারেক্টার র‍্যান্ডমলি নেয়া হচ্ছে Math.random() দিয়ে। 
+    * যতক্ষন না পর্যন্ত ১০ টা ক্যারেক্টার পযন্ত না হবে ততক্ষন পর্যন্ত generate হতে থাকবে।
+    * passwordBox এর ভেতরের value এবার passKey তে প্রিন্ট হবে।
+
+৪. copyBtn এ ক্লিক করলে ->
+    * password এর value যদি generate হয় তাহলে  navigator.clipboard.writeText('copy') হবে 
+
+const passwordBox = document.quarySelector("#password");
+const copyBtn = document.quarySelector("#copyBtn");
+
+const length = 10;
+const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+const numberCase = "1234567890";
+const symbolCase = "!@#$%^&*(){}[]?|/,.`~";
+
+const charecter = upperCase + lowerCase + symbolCase + numberCase;
+
+function generatePassword(){
+    let passKey = "";
+
+    passKey += upperCase[Math.floor(Math.random() * upperCase.length)];
+    passKey += lowerCaseCase[Math.floor(Math.random() * lowerCase.length)];
+    passKey += numberCase[Math.floor(Math.random() * numberCase.length)];
+    passKey += symbolCase[Math.floor(Math.random() * symbolCase.length)];
+
+    while(length > passKey.length){
+        passKey += charecter[Math.floor(Math.random() * charecter.length)]
+    }
+    passwordBox.value = passKey;
+}
+
+
+copyBtn.addEventListener("click", () => {
+    let pw = passwordBox.value;
+
+    if(pw){
+        navigator.clipboard.writeText('copy')
+        .then(() => {
+            copyBtn.style.color = "green";
+            setTimeout(() => {
+                copyBtn.style.color = "#fff"
+            });
+        });
+    };
+});
