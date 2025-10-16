@@ -28,7 +28,7 @@
       <h1>Random password Generator</h1>
       <div class="card">
         <div class="pass-box">
-          <input type="text" name="" id="password" placeholder="Password" />
+          <input type="text" name="" id="password" placeholder="Password" maxlength="10" />
           <i class="fa-solid fa-copy" id="copy"></i>
         </div>
         <button class="gen-box" onclick="generateBtn()">
@@ -73,6 +73,7 @@
                 passwordBox.value = "";
                 
             }, 3000);
+           
         }
 
         // এখান কি হলোঃ
@@ -93,16 +94,17 @@
         // })
 
         copyBtn.addEventListener("click", () => {
-            const pw = passwordBox.value;
+            const pw = passwordBox.value.trim(); // variable কে trim() করা হলো 
 
             if(pw){
-                navigator.clipboard.writeText(pw)
+                navigator.clipboard.writeText(pw) // যদি value প্রিন্ট হয় তাহলে সেই value টা copy হবে। 
                 .then( () => {
-                    copyBtn.style.color = "green";
-                    setTimeout(() => {
+                    copyBtn.style.color = "green"; // তারপর Btn সবুজ কালার হবে
+                    setTimeout(() => {             // ৩ সেকেন্ড পর আবার সাদা হয়ে যাবে।
                         copyBtn.style.color = "#fff";
 
-                    }, 3000)
+                    }, 3000);
+                    passwordBox.value = ""; // এবং তোমার নিজ তৈরি করা(generate ছাড়া) value  যাই হোক সেটাও খালি হয়ে যাবে।
                 })
             }
         })

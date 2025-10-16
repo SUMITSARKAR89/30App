@@ -47,6 +47,7 @@ copyBtn.addEventListener("click", () => {
             setTimeout(() => {
                 copyBtn.style.color = "#fff"
             });
+            passwordBox.value = '';
         });
     };
 });
