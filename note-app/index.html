@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="logo (4).png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- this is google font section   --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn   --------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Note app</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Create Note App</h1>
+      <div class="card">
+        <h2><i class="fa-solid fa-note-sticky"></i> Notes</h2>
+        <button class="btn">
+          <i class="fa-solid fa-pen-to-square"></i> create note
+        </button>
+
+        <div class="note-container">
+          <!-- <div class="note-box">
+            <p contenteditable="true" class="input-box"></p>
+            <i class="fa-solid fa-trash"></i>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const button = document.querySelector(".btn ");
+      const noteContainer = document.querySelector(".note-container");
+      
+      function updateStorage() {
+        localStorage.setItem("notes", noteContainer.innerHTML)
+      }
+
+      function showNotes () {
+        noteContainer.innerHTML = localStorage.getItem("notes");
+      }
+      showNotes();
+
+
+
+
+
+      //এখানে কি হলোঃ
+      // ১. button এ ক্লিক করলে-> 
+            // * উপরের মত html স্টাকচার হবে।
+
+
+      button.addEventListener("click", () => {
+        let div = document.createElement("div");
+        let p = document.createElement("p");
+        let i = document.createElement("i");
+
+        div.className = "note-box";
+        p.className = "input-box";
+        p.setAttribute("contenteditable", "true");
+        i.className = "fa-solid fa-trash";
+
+        div.appendChild(p);
+        div.appendChild(i);
+        noteContainer.appendChild(div);
+        updateStorage();
+
+       
+      });
+
+      //এখানে কি হলোঃ
+      //১. noteContainer এ ইনপুট করলে updateStorage কল হবে।
+    //   noteContainer.addEventListener("input", () => {
+    //     updateStorage();
+    //   });
+
+      //এখানে কি হলোঃ
+      //১. noteContainer এ ক্লিক করলে event রান হবে।
+        // * যদি noteContainer এর ভেতরে <i> তে ক্লিক করা হয় -> noteContainer পুরোটাই রিমুভ হবে না।
+        // * update হবে ডাটা
+
+
+      noteContainer.addEventListener("click", (e) => {
+        if(e.target.tagName === "I"){
+            e.target.parentElement.remove();
+            updateStorage();
+        }
+      })
+    </script>
+  </body>
+</html>
