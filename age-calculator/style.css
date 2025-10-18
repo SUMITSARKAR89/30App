@@ -1,0 +1,92 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+html {
+  scroll-behavior: smooth;
+  animation: fadeed 0.5s ease-in-out;
+   font-family: "Roboto", sans-serif;
+}
+body{
+    width: 100%;
+    height: auto;
+     font-family: "Roboto", sans-serif;
+     color: #fff;
+     background: #000;
+}
+.container{
+    max-width: 1280px;
+    height: auto;
+    width: 100%;
+    background: #13121252;
+    padding: 20px 40px;
+    border-radius: 10px;
+    margin: 2% auto;
+}
+.card{
+    max-width: 100%;
+    width: 45%;
+    padding: 20px;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    
+    background: linear-gradient(130deg, #12c6cc, #8fb39d);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+  
+   
+}
+h1{
+    text-align: center;
+    margin-top: 15px;
+}
+label{
+    text-transform: capitalize;
+    color: yellow;
+}
+#inputBox{
+    width: 50%;
+    border: 0;
+    outline: 0;
+    padding: 10px;
+    margin: 5px;
+    background: #fff;
+    color: rgb(128, 0, 111);
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 5px;
+    
+}
+.btn{
+     cursor: pointer;
+    width: fit-content;
+    padding: 10px 25px;
+    font-weight: 500;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    background: yellow;
+    color: #010700;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+#result{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}

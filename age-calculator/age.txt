@@ -1,0 +1,50 @@
+const btn = document.querySelector("button");
+const input = document.querySelector("input");
+const result = document.querySelector(".result");
+
+
+// এখানে কি হলোঃ
+১. butto এ ক্লিক করলে ->
+        ** যদি value খালি থাকে তাহলে <p class= result> এর ভেতরে alert শো করবে।
+
+        variable:
+        ** newday, oldday.
+        ** newday-oldday, new month - old month, new year - old year.
+
+        ** যদি 0 থেকে day ছোট হয় ->
+            * month থেকে বিয়োগ হবে day (month-day).
+            * এবং day সমান হলে new Date (year, month, 0).getdate() এ বসবে।
+
+        ** যদি 0 থেকে month ছোট হয় ->
+            * year থেকে বিয়োগ হবে month (year-month).
+            * এবং year যদি 12 এর সমান হলে। 
+    result এ ভেতরে সব কিছু প্রিন্ট হবে             
+                  
+
+btn.addEventListener("click", () => {
+    let value = input.value;
+
+    if(value === ""){
+        result.innerHtml = "please select your birthdate"
+        return;
+    };
+
+    const newday = new Date(value);
+    const today = new Date();
+
+    let year = today.getFullYear() -  newday.getFullYear();
+    let month = today.getMonth() -  newday.getMonth();
+    let day = today.getDate() -  newday.getDate();
+
+    if(day < 0){
+        month--;
+        day += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+    }
+
+    if(month < 0){
+        year--;
+        month += 12
+    }
+
+    result.innerHtml = `your age ${year} years, ${month} months and ${day} days Old`
+})
