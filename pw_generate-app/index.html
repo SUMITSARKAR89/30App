@@ -65,14 +65,14 @@
             passKey += symbolCase[Math.floor(Math.random() * symbolCase.length)];
 
             while(length > passKey.length){
-                passKey += charecters[Math.floor(Math.random() * charecters.length)]
+                passwordBox.value = passKey += charecters[Math.floor(Math.random() * charecters.length)]
 
             }
-            passwordBox.value = passKey;
+            
             setTimeout(() => {
                 passwordBox.value = "";
                 
-            }, 3000);
+            }, 6000);
            
         }
 

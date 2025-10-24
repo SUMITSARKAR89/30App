@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="logo (4).png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- this is google font section   --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn   --------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>qoute genetor app</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Quote Generator App</h1>
+      <div class="card">
+        <h2>Quotes of the day ...</h2>
+        <h3 class="qoute">Loading ...</h3>
+        <span class="author">Loading...</span>
+        <div class="btn-group">
+          <button class="generateBtn" onclick="generateQuote()">New Qoute</button>
+          <button class="twtterBtn" onclick="twitter()">
+            <img src="logos.png" alt="" /> twitter
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const quote = document.querySelector(".qoute");
+      const author = document.querySelector(".author");
+      const generateBtn = document.querySelector(".generateBtn");
+      const twitterBtn = document.querySelector(".twtterBtn");
+// ----------------- Api link from Rapid Ai code-----------------------
+// https://rapidapi.com/martin.svoboda/api/quotes15/playground/apiendpoint_bee4ff8c-eb2e-40e8-8990-fd2850a27179
+      const api_url =
+        "https://quotes15.p.rapidapi.com/quotes/random/?language_code=en";
+      const options = {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key":
+            "48985ab83dmshce4c6cfdc5e823cp123cb9jsn95e6ee843ed9",
+          "x-rapidapi-host": "quotes15.p.rapidapi.com",
+        },
+      };
+
+      // 🟢 API থেকে quote আনবে
+      async function generateQuote() {
+        const response = await fetch(api_url, options);
+        let data = await response.json();
+        console.log(data);
+        quote.innerHTML = data.content;
+        author.innerHTML = data.originator.name;
+      }
+       generateQuote();
+
+       //twitter Api Link
+       // https://developer.x.com/en/docs/x-for-websites/tweet-button/overview
+       function twitter() {
+        window.open(href="https://twitter.com/intent/tweet?text=" + quote.innerHTML + "%0A---By " + author.innerHTML,  "Tweet Window", "width=200", "height=300")
+        
+       }
+      
+    </script>
+  </body>
+</html>

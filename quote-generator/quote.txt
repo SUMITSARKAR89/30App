@@ -1,0 +1,38 @@
+const quote = document.querySelector(".qoute");
+const author = document.querySelector(".author");
+const generateBtn = document.querySelector(".generateBtn");
+const twitterBtn = document.querySelector(".twtterBtn");
+
+// ----------------- Api link from Rapid Ai code-----------------------
+// https://rapidapi.com/martin.svoboda/api/quotes15/playground/apiendpoint_bee4ff8c-eb2e-40e8-8990-fd2850a27179
+
+ const api_url =
+        "https://quotes15.p.rapidapi.com/quotes/random/?language_code=en";
+const options = {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key":
+            "48985ab83dmshce4c6cfdc5e823cp123cb9jsn95e6ee843ed9",
+          "x-rapidapi-host": "quotes15.p.rapidapi.com",
+        },
+      };
+
+//----------------API থেকে quote আনবে
+
+async function generateQuote(){
+    const res = await fetch (api_url, option);
+    let data = await res.json();
+
+    quote.innerHtml = data.content;
+    author.innerHtml = data.originator.author;
+}
+generateQuote();
+
+
+
+ //twitter Api Link
+       // https://developer.x.com/en/docs/x-for-websites/tweet-button/overview
+       // %0A এর অর্থ </br>
+function twitter(){
+    window.open(href="https://twitter.com/intent/tweet?text=" + quote.innerHTML + "%0A---By " + author.innerHTML,  "Tweet Window", "width=200", "height=300")
+};

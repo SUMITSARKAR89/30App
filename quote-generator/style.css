@@ -1,0 +1,140 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+html {
+  scroll-behavior: smooth;
+  animation: fadeed 0.5s ease-in-out;
+   font-family: "Roboto", sans-serif;
+}
+body{
+    width: 100%;
+    height: auto;
+     font-family: "Roboto", sans-serif;
+     color: #fff;
+     background: #000;
+}
+.container{
+    max-width: 1280px;
+    height: auto;
+    width: 100%;
+    background: #13121252;
+    padding: 20px 40px;
+    border-radius: 10px;
+    margin: 2% auto;
+}
+.card{
+    max-width: 100%;
+    width: 45%;
+    padding:30px 20px;
+    height: 400px;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+
+    
+    background: linear-gradient(130deg, #489fb9d2, #49404063);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+  
+   
+}
+h1{
+    text-align: center;
+    margin-top: 15px;
+}
+h2{
+    font-weight: 500;
+    font-size: 2rem;
+    color: gold;
+    position: relative;
+}
+h2::after{
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background-color: rgb(5, 247, 5);
+    bottom: -30%;
+    border-radius: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.7s;
+}
+h2:hover::after{
+    width: 150px;
+}
+ h3{
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-top: 20px;
+ }
+ h3::before, h3::after{
+    content: '"';
+ }
+ span{
+    position: absolute;
+    font-weight: 500;
+    bottom: 35%;
+    right: 30px;
+    color: rgb(197, 197, 6);
+ }
+ span::before{
+    content: '- - - ';
+ }
+ .btn-group{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 100%;
+    position: absolute;
+    bottom: 40px;
+ }
+ button{
+    width: 100%;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    border-radius: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: 0.3s;
+    border:1px solid transparent;
+   
+ }
+ button:hover{
+    opacity: 0.8;
+    border: 1px solid #5f0b0b;
+ }
+ .generateBtn{
+     color: #fff;
+    background: rgb(5, 175, 5);
+ }
+ .twtterBtn{
+    color: #000000a8;
+    background: #fff;
+ }
+ .twtterBtn img{
+    width: 30px;
+ }
