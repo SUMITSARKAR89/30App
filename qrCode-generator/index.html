@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="logo (4).png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- this is google font section   --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn   --------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>QR code genetor app</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>QR code generator app</h1>
+      <div class="card">
+        <p>Enter your Text or Url link</p>
+        <input type="text" placeholder="Enter Text or Url " id="qrText" />
+        <div class="imageBox">
+          <img src="" alt="" id="qrImg" />
+        </div>
+        <p class="pTag"></p>
+        <button onclick="genBtn()">Generate QR code</button>
+      </div>
+    </div>
+
+    <script>
+      const qrText = document.querySelector("#qrText");
+
+      const qrImg = document.querySelector("#qrImg");
+      const imageBox = document.querySelector(".imageBox");
+      const pTag = document.querySelector(".pTag");
+
+      function genBtn() {
+        let value = qrText.value;
+        
+        if (value.length > 0) {
+          qrImg.src = "https://quickchart.io/qr?text=" + value;
+          imageBox.classList.add("active");
+        } else {
+          imageBox.classList.remove("active");
+          pTag.innerHTML = "Please Enter Text or URL or Try again";
+
+          setTimeout(() => {
+            pTag.style.display = "none";
+          }, 3000);
+        }
+      }
+    </script>
+  </body>
+</html>
