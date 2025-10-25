@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="logo (4).png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- this is google font section   --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn   --------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://kit.fontawesome.com/2178848727.js" crossorigin="anonymous"></script>
+
+    <title>built Notification and snake bar</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Notification or Snake bar</h1>
+      <div class="card">
+        <button class="success" onclick="notifyBtn(successMsg)">Success button</button>
+        <button class="invalid" onclick="notifyBtn(invalidMsg)">Invalid button</button>
+        <button class="delete" onclick="notifyBtn(deletMsg)">Delete button</button>
+      </div>
+      
+    </div>
+    <div id="toast"></div>
+
+    <script>
+        const toastBox = document.querySelector("#toast");
+        const successMsg = '<i class="fa-solid fa-check"></i> congrats.. Your data is successfully restore';
+        const invalidMsg =  '<i class="fa-solid fa-exclamation"></i> Error! invalid Massage, try again';
+        const deletMsg = '<i class="fa-solid fa-xmark"></i> Your massage is successfully delete.';
+
+
+        //এখানে কি হলোঃ
+        // onclick() রান করা হলোঃ
+            //* <div class='toast'>-----text--- </div> elements এড করা হল।
+            //* যদি invalid হয় তাহলে invalid ক্লাস কাজ করবে।
+            //* যদি delete হয় তাহলে delete ক্লাস কাজ করবে।
+            //* প্রতিটা elements ৩ সেকেন্ড পর মুছে যাবে। 
+        function notifyBtn(msg){
+            let toastTag = document.createElement("div");
+            toastTag.classList.add("toast");
+            toastTag.innerHTML = msg;
+            toastBox.appendChild(toastTag);
+
+            if(msg.includes('invalid')){
+                toastTag.classList.add("invalid")
+            }
+            if(msg.includes('delete')){
+                toastTag.classList.add("delete")
+            }
+
+            setTimeout(() => {
+                toastTag.remove()
+
+            }, 3000)
+        }
+    </script>
+  </body>
+</html>
