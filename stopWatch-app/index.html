@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="logo (4).png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- this is google font section   --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn   --------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://kit.fontawesome.com/2178848727.js" crossorigin="anonymous"></script>
+
+    <title>stopwatch app</title>
+  </head>
+<body>
+    <div class="container">
+        <h1>⏱ Stopwatch app</h1>
+        <div class="card">
+            <h2 id="stopWatch">00:00:00:00</h2>
+            <div class="buttons">
+                
+                <button onclick="stopTimer()"><i class="fa-solid fa-stop"></i></button>
+                <button onclick="startTimer()"><i class="fa-solid fa-play"></i></button>
+                <button onclick="resetTimer()"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+            </div>
+            <p id="pera"></p>
+        </div>
+    </div>
+
+    <script>
+        //use variable
+        const stopWatch = document.getElementById('stopWatch'); 
+        const pera = document.getElementById('pera');
+        let [mili, second, minute, hour] = [0,0,0,0];
+
+        //set timer variable (null)
+        let timer = null;
+
+        //4. HTML update result
+        function updateStopWatch(){  // HTML এ আপডেট হবে। 
+
+            let h = hour < 10 ? "0" + hour : hour;
+            let m = minute < 10 ? "0" + minute : minute;
+            let s = second < 10 ? "0" + second : second;
+            let ms = mili < 10 ? "0" + mili : mili;
+            stopWatch.innerHTML = h + ":" + m + ":" + s + ":" + ms; 
+
+            pera.innerHTML = `Your time is ${h}:${m}:${s}:${ms} miliSecond`;
+            pera.style.display = "block";
+        }
+
+        //1. onclick() Start
+        function startTimer(){
+            if(timer !== null) return; //যদি start এ ক্লিক না করা হয় তাহলে যা আছে তাই return দেবে।
+             pera.style.display = "none";
+ 
+            //setInterval 
+           timer = setInterval(() => {
+        
+            mili++;             // ১ করে বাড়াও 
+            if(mili === 100){   // যদি ১০০ মিলিসেকেন্ড হয়
+                mili = 0;       // মিলিসেকেন্ড ০ তে ফিরে যাও
+                second++;       // ১ সেকেন্ড বাড়াও
+            }
+            if(second === 60){  // যদি ৬০ সেকেন্ড হয়
+                second = 0;     //সেকেন্ড ০ তে ফিরে যাও
+                minute++;       // ১ মিনিট বাড়াও
+            }
+            if(minute === 60){  // যদি ৬০ মিনিট হয়
+                minute = 0;     //মিনিট ০ তে ফিরে যাও
+                hour++;         // ১ ঘন্টা বাড়াও
+            }
+            updateStopWatch(); // HTML এ আপডেট যোগ হবে। 
+           
+
+           }, 10);
+
+        }
+
+        //2. onclick() stop
+        function stopTimer(){
+            clearInterval(timer); //যা আছে সব শূন্য হয়ে যাবে
+            timer = null;
+            
+        }
+
+        //3. onclick() reset
+        function resetTimer(){
+            clearInterval(timer); //যা আছে সব শূন্য হয়ে যাবে
+            [mili, second, minute, hour] = [0,0,0,0]; // সব কিছু reset করে দেবে। 
+            updateStopWatch(); // HTML এ আপডেট যোগ হবে। 
+            pera.style.display = "none";
+
+        }
+
+        
+    </script>
+    
+</body>
+</html>

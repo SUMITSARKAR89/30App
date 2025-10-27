@@ -1,0 +1,117 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+html {
+  scroll-behavior: smooth;
+  animation: fadeed 0.5s ease-in-out;
+   font-family: "Roboto", sans-serif;
+}
+body{
+    width: 100%;
+    height: 95vh;
+    overflow-x: hidden;
+     font-family: "Roboto", sans-serif;
+     color: #fff;
+     background: #000;
+      position: relative;
+}
+.container{
+    max-width: 1280px;
+    height: auto;
+    width: 100%;
+    background: #13121252;
+    padding: 20px 40px;
+    border-radius: 10px;
+    margin: 2% auto;
+   
+}
+.card{
+    max-width: 100%;
+    width: 40%;
+    padding:30px 20px;
+    height: auto;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+     background: linear-gradient(190deg, #92b6b6, #fafcfb);
+    align-items: center;
+    gap: 5px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    position: relative;
+    
+  
+   
+}
+
+h1{
+    text-align: center;
+    margin-top: 15px;
+}
+h2{
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: rgb(0, 0, 0);
+}
+
+.buttons{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: fit-content;
+    max-width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    border-radius: 35px;
+    border: 1px solid rgb(216, 202, 202);
+    padding:20px ;
+    
+}
+.buttons button{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: 0.2s ;
+    
+}
+.buttons button:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.buttons button:nth-child(2){
+    transform: scale(1.5);
+    color: rgb(2, 187, 2);
+}
+.buttons button:nth-child(1),
+.buttons button:nth-child(3){
+    color: #000000c0;
+}
+button i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+#pera {
+    display: none;
+    color: green;
+    font-size: 0.7rem;
+}
