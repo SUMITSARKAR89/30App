@@ -1,11 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="logo (4).png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" />
+    <!-- this is google font section   --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome cdn   --------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <title>calculator app</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Calculator App</h1>
+      <div class="card">
+        <h2>CALCULATOR</h2>
+        <form action="">
+          <div class="result">
+            <input type="text" value="" id="display" disabled />
+          </div>
+
+          <div class="buttons">
+            <input
+              type="button"
+              value="AC"
+              onclick="clearValue()"
+              style="background: #ff4757"
+            />
+            <input
+              type="button"
+              value="DEL"
+              onclick=" del()"
+              style="background: rgb(124, 63, 63); color: aliceblue"
+            />
+            <input
+              type="button"
+              value="%"
+              onclick="add('%') "
+              class="operator"
+            />
+            <input
+              type="button"
+              value="/"
+              onclick="add('/') "
+              class="operator"
+            />
+          </div>
+          <div class="buttons">
+            <input type="button" value="7" onclick="add('7') " />
+            <input type="button" value="8" onclick="add('8')" />
+            <input type="button" value="9" onclick="add('9') " />
+            <input
+              type="button"
+              value="x"
+              onclick=" add('*')"
+              class="operator"
+            />
+          </div>
+          <div class="buttons">
+            <input type="button" value="4" onclick="add('4') " />
+            <input type="button" value="5" onclick="add('5') " />
+            <input type="button" value="6" onclick="add('6') " />
+            <input
+              type="button"
+              value="-"
+              onclick="add('-')"
+              class="operator"
+            />
+          </div>
+          <div class="buttons">
+            <input type="button" value="1" onclick="add('1') " />
+            <input type="button" value="2" onclick="add('2') " />
+            <input type="button" value="3" onclick="add('3') " />
+            <input
+              type="button"
+              value="+"
+              onclick="add('+')"
+              class="operator"
+            />
+          </div>
+          <div class="buttons">
+            <input type="button" value="00" onclick=" add('00')" />
+            <input type="button" value="0" onclick="add('0')" />
+            <input type="button" value="." onclick="add('.')" />
+            <input
+              type="button"
+              value="="
+              onclick="equal()"
+              style="background: greenyellow"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const display = document.querySelector("#display");
+      
+
+      function add(value) {
+        const displayValue = display.value;
+        let count = 0;
+        for (let i of displayValue) {
+          if (i >= "0" && i <= "9") {
+            count++;
+          }
+        }
+
+        if (count >= 11) return;
+        display.value +=  value;
+      }
+
+      function clearValue() {
+        display.value = "";
+      }
+      function del() {
+        display.value = display.value.slice(0, -1);
+      }
+      
+      function equal() {
+        let displayValue = display.value;
+        let percent = "";
+
+        for (let i of displayValue) {
+          if (i === "%") {
+            percent += "/100";
+          } else {
+            percent += i;
+          }
+        }
+
+        display.value = '=' + eval(percent);
+      }
+    </script>
+  </body>
 </html>
